@@ -2,8 +2,8 @@
 version: 2
 plan:
   project-key: PROJ
-  key: abc
-  name: abc
+  key: abc1
+  name: abc1
 stages:
 - Default Stage:
     manual: false
