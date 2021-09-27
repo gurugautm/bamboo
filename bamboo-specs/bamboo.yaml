@@ -25,7 +25,7 @@ Default Job:
         globalApiUrl: http://18.117.86.8:8080/
         globalAquaPassword: '@Password1'
         registry: Docker Hub
-        imageName: centos:latest
+        imageName: centos:7
         globalScannerImage: registry.aquasec.com/scanner:6.2
         locationType: hosted
         aquaConfig: current
