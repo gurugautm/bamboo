@@ -1,4 +1,3 @@
----
 version: 2
 plan:
   project-key: PROJ
@@ -13,21 +12,15 @@ stages:
 Default Job:
   key: JOB1
   tasks:
-  - checkout:
-      force-clean-build: 'false'
-  - script:
-      interpreter: SHELL
-      scripts:
-      - docker build . --no-cache -t bamboo-agent -f Dockerfile
+# Checkout Task will be added implicitly during Specs import
   - any-task:
       plugin-key: aqua-scanner.aqua-scanner:aqua-scanner
       configuration:
         globalApiUrl: http://18.117.86.8:8080/
         globalAquaPassword: '@Password1'
-        registry: Docker Hub
-        imageName: centos:latest
-        globalScannerImage: registry.aquasec.com/scanner:5.3
-        locationType: hosted
+        imageName: bamboo-agent:latest
+        globalScannerImage: registry.aquasec.com/scanner:6.2
+        locationType: local
         aquaConfig: current
         globalAquaUser: administrator
         useContextVariable: 'false'
@@ -35,9 +28,7 @@ Default Job:
         showNegligible: 'true'
         globalCaCertificates: 'true'
         register: 'true'
-triggers:
-- polling:
-    period: '180'
+triggers: []
 branches:
   create: manually
   delete: never
@@ -51,6 +42,11 @@ version: 2
 plan:
   key: PROJ-SPEC
 plan-permissions:
+- roles:
+  - logged-in
+  - anonymous
+  permissions:
+  - view
 - users:
   - bamboo
   permissions:
@@ -59,4 +55,5 @@ plan-permissions:
   - build
   - clone
   - admin
+...
 
