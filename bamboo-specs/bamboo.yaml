@@ -26,7 +26,7 @@ Default Job:
         globalAquaPassword: '@Password1'
         registry: Docker Hub
         imageName: centos:latest
-        globalScannerImage: registry.aquasec.com/scanner:5.3
+        globalScannerImage: registry.aquasec.com/scanner:6.2
         locationType: hosted
         aquaConfig: current
         globalAquaUser: administrator
